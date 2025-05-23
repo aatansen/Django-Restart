@@ -1,0 +1,10 @@
+[project]
+name = "django-restart"
+version = "0.1.0"
+description = "Notes, examples, and practice projects based on Django 5"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "django>=5.2.1",
+    "pipdeptree>=2.26.1",
+]
