@@ -11,6 +11,7 @@
   - [**Day 02**](#day-02)
     - [Functional View](#functional-view)
     - [Configure `urls.py`](#configure-urlspy)
+    - [`**kwargs` in `urls` \& `views`](#kwargs-in-urls--views)
 
 ## **Day 01**
 
@@ -121,5 +122,42 @@
       path('',include('first_app.urls'))
   ]
   ```
+
+[⬆️ Go to Context](#context)
+
+### `**kwargs` in `urls` & `views`
+
+- Create a function in [views.py](./Day%2002/first_app/views.py)
+
+  ```py
+  def contact(request,**kwargs):
+      status=kwargs.get('status')
+      return HttpResponse(f"contact page {status}")
+  ```
+
+- Add `url` path in [urls.py](./Day%2002/first_app/urls.py)
+
+  ```py
+  urlpatterns = [
+      ...
+      path('contact/',views.contact,{'status':'ok'},name='contact'),
+  ]
+  ```
+
+- Adding another path based on same view with different `**kwargs`
+
+  ```py
+  urlpatterns = [
+      ...
+      path('contact-v2/',views.contact,{'status':'not ok'},name='contact'),
+  ]
+  ```
+
+> [!NOTE]
+>
+> - The third argument in the `path()` function, `{'status': 'ok'}`, is passed to the view as `**kwargs`
+> - In this case, when someone visits `/contact/`, Django will call `contact(request, status='ok')`
+> - This is useful for passing static values to a view without needing to include them in the URL
+> - `contact-v2/` this URL pattern passes `{'status': 'not ok'}` as `**kwargs` to the contact view. It allows reusing the same view (contact) but change the behavior based on static data
 
 [⬆️ Go to Context](#context)

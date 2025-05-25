@@ -8,3 +8,7 @@ def my_function(request):
 
 def home(request):
     return HttpResponse("home page")
+
+def contact(request,**kwargs):
+    status=kwargs.get('status')
+    return HttpResponse(f"contact page {status}")
