@@ -12,6 +12,8 @@
     - [Functional View](#functional-view)
     - [Configure `urls.py`](#configure-urlspy)
     - [`**kwargs` in `urls` \& `views`](#kwargs-in-urls--views)
+  - [**Day 03**](#day-03)
+    - [Template in Django](#template-in-django)
 
 ## **Day 01**
 
@@ -159,5 +161,32 @@
 > - In this case, when someone visits `/contact/`, Django will call `contact(request, status='ok')`
 > - This is useful for passing static values to a view without needing to include them in the URL
 > - `contact-v2/` this URL pattern passes `{'status': 'not ok'}` as `**kwargs` to the contact view. It allows reusing the same view (contact) but change the behavior based on static data
+
+[⬆️ Go to Context](#context)
+
+## **Day 03**
+
+### Template in Django
+
+- Create [templates](./Day%2003/first_app/templates/) in app directory where a same name sub-directory of app name [first_app](./Day%2003/first_app/templates/first_app/) need to be created. Here we will create [index.html](./Day%2003/first_app/templates/first_app/index.html)
+
+  ```tree
+  📦first_app
+  ┣ 📂templates
+  ┃ ┗ 📂first_app
+  ┃   ┗ 📜index.html
+  ```
+
+- Create a function in [views.py](./Day%2003/first_app/views.py)
+
+  ```py
+  from django.shortcuts import render
+
+  # Create your views here.
+  def first_app(request):
+      return render(request,'first_app/index.html')
+  ```
+
+- Configure app's [urls.py](./Day%2003/first_app/urls.py) with project [urls.py](./Day%2003/first_project/urls.py)
 
 [⬆️ Go to Context](#context)
