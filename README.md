@@ -14,6 +14,7 @@
     - [`**kwargs` in `urls` \& `views`](#kwargs-in-urls--views)
   - [**Day 03**](#day-03)
     - [Template in Django](#template-in-django)
+      - [Send context data in template](#send-context-data-in-template)
 
 ## **Day 01**
 
@@ -188,5 +189,25 @@
   ```
 
 - Configure app's [urls.py](./Day%2003/first_app/urls.py) with project [urls.py](./Day%2003/first_project/urls.py)
+
+[⬆️ Go to Context](#context)
+
+#### Send context data in template
+
+- Create a dictionary in [views.py](./Day%2003/first_app/views.py)
+
+  ```py
+  def first_app(request):
+      dynamic_data={
+          'dt':'hello',
+      }
+      return render(request,'first_app/index.html',context=dynamic_data)
+  ```
+
+- Show the data in template's [index.html](./Day%2003/first_app/templates/first_app/index.html)
+
+  ```jinja
+  <h1>Dynamic data: {{dt}}</h1>
+  ```
 
 [⬆️ Go to Context](#context)
