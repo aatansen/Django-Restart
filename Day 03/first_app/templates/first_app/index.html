@@ -8,5 +8,14 @@
 <body>
     <h1>Hello from First App</h1>
     <h1>Dynamic data: {{dt}}</h1>
+    <h1>Uppercase: {{dt|upper}}</h1>
+    <h1>Lowercase: {{dt|lower}}</h1>
+    <h1>Truncate Words: {{description|truncatewords:2}}</h1>
+    <h1>Truncate Characters: {{description|truncatechars:2}}</h1>
+    <h1>Multi-Filter: {{description|upper|truncatewords:2}}</h1>
+    <h1>Capital first: {{dt|capfirst}}</h1>
+    <h1>User: {{user_data|default:"anonymous"}}</h1>
+    <h1>Length: {{dt|length}}</h1>
+    <h1>Slice: {{dt|slice:'2:3'}}</h1>
 </body>
 </html>

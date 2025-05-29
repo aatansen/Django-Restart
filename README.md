@@ -15,6 +15,9 @@
   - [**Day 03**](#day-03)
     - [Template in Django](#template-in-django)
       - [Send context data in template](#send-context-data-in-template)
+    - [Django Template Language](#django-template-language)
+      - [Variables](#variables)
+      - [Filters](#filters)
 
 ## **Day 01**
 
@@ -208,6 +211,78 @@
 
   ```jinja
   <h1>Dynamic data: {{dt}}</h1>
+  ```
+
+[⬆️ Go to Context](#context)
+
+### Django Template Language
+
+- Full docs can be found in official [Django Template Language](https://docs.djangoproject.com/en/5.2/ref/templates/language/)
+
+#### Variables
+
+  ```jinja
+  <h1>Dynamic data: {{dt}}</h1>
+  ```
+
+- Here `{{dt}}` is called variable
+
+[⬆️ Go to Context](#context)
+
+#### Filters
+
+- Uppercase
+
+  ```jinja
+  <h1>Uppercase: {{dt|upper}}</h1>
+  ```
+
+- Lowercase
+
+  ```jinja
+  <h1>Lowercase: {{dt|lower}}</h1>
+  ```
+
+- Truncate Words
+
+  ```jinja
+  <h1>Truncate Words: {{description|truncatewords:2}}</h1>
+  ```
+
+- Truncate Characters
+
+  ```jinja
+  <h1>Truncate Characters: {{description|truncatechars:2}}</h1>
+  ```
+
+- Multi-Filter
+
+  ```jinja
+  <h1>Multi-Filter: {{description|upper|truncatewords:2}}</h1>
+  ```
+
+- Capital First
+
+  ```jinja
+  <h1>Capital first: {{dt|capfirst}}</h1>
+  ```
+
+- Default value
+
+  ```jinja
+  <h1>User: {{user_data|default:"anonymous"}}</h1>
+  ```
+
+- Length
+
+  ```jinja
+  <h1>Length: {{dt|length}}</h1>
+  ```
+
+- Slice
+
+  ```jinja
+  <h1>Slice: {{dt|slice:'2:3'}}</h1>
   ```
 
 [⬆️ Go to Context](#context)
