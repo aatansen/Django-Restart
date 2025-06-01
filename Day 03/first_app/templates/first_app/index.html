@@ -17,5 +17,13 @@
     <h1>User: {{user_data|default:"anonymous"}}</h1>
     <h1>Length: {{dt|length}}</h1>
     <h1>Slice: {{dt|slice:'2:3'}}</h1>
+    <h1>Date time: {{date_time}}</h1>
+    <h1>Date only: {{date_time|date}}</h1>
+    <h1>Day Date Month Year: {{date_time|date:'D d M Y'}}</h1>
+    <h1>Time only: {{date_time|time}}</h1>
+    <h1>24-hour time format: {{date_time|time:'H:i'}}</h1>
+    <h1>Short date format: {{date_time|date:'SHORT_DATE_FORMAT'}}</h1>
+</h1>
+
 </body>
 </html>

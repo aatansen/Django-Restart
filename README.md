@@ -18,6 +18,7 @@
     - [Django Template Language](#django-template-language)
       - [Variables](#variables)
       - [Filters](#filters)
+      - [Date and Time](#date-and-time)
 
 ## **Day 01**
 
@@ -217,7 +218,7 @@
 
 ### Django Template Language
 
-- Full docs can be found in official [Django Template Language](https://docs.djangoproject.com/en/5.2/ref/templates/language/)
+- Full docs can be found in official [Django Template Language](https://docs.djangoproject.com/en/stable/ref/templates/language/)
 
 #### Variables
 
@@ -284,5 +285,85 @@
   ```jinja
   <h1>Slice: {{dt|slice:'2:3'}}</h1>
   ```
+
+[⬆️ Go to Context](#context)
+
+#### Date and Time
+
+- Send date time in context of [views.py](./Day%2003/first_app/views.py)
+
+  ```py
+  from django.shortcuts import render
+  from datetime import datetime
+
+  # Create your views here.
+  def first_app(request):
+      date_time = datetime.now()
+
+      dynamic_data={
+          ...
+          'date_time': date_time,
+      }
+      return render(request,'first_app/index.html',context=dynamic_data)
+  ```
+
+- Show in template (default view)
+
+  ```jinja
+  <h1>Date time: {{date_time}}</h1>
+  ```
+
+  - `June 1, 2025, 1:53 p.m.`
+
+- Show only date
+
+  ```jinja
+  <h1>Date time: {{date_time|date}}</h1>
+  ```
+
+  - `June 1, 2025`
+
+- Day Date Month Year (`D d M Y`)
+
+  ```jinja
+  <h1>Day Date Month Year: {{date_time|date:'D d M Y'}}</h1>
+  ```
+
+  - `Sun 01 Jun 2025`
+
+- Time only
+
+  ```jinja
+  <h1>Time only: {{date_time|time}}</h1>
+  ```
+
+  - `2:06 p.m.`
+
+- 24-hour time format
+
+  ```jinja
+  <h1>24-hour time format: {{date_time|time:'H:i'}}</h1>
+  ```
+
+  - `14:07`
+
+- Short date format
+
+  ```jinja
+  <h1>Short date format: {{date_time|date:'SHORT_DATE_FORMAT'}}</h1>
+  ```
+
+  - `06/01/2025`
+
+- More Format Constants
+
+  | Format Constant         | Default (en)  | Meaning                   |
+  | ----------------------- | ------------- | ------------------------- |
+  | `DATE_FORMAT`           | `'N j, Y'`    | `June 1, 2025`            |
+  | `SHORT_DATE_FORMAT`     | `'m/d/Y'`     | `06/01/2025`              |
+  | `DATETIME_FORMAT`       | `'N j, Y, P'` | `June 1, 2025, 2:30 p.m.` |
+  | `SHORT_DATETIME_FORMAT` | `'m/d/Y P'`   | `06/01/2025 2:30 p.m.`    |
+
+- [Date Time Official Built-in template tags and filters](https://docs.djangoproject.com/en/stable/ref/templates/builtins/#date)
 
 [⬆️ Go to Context](#context)
