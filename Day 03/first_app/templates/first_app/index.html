@@ -23,6 +23,26 @@
     <h1>Time only: {{date_time|time}}</h1>
     <h1>24-hour time format: {{date_time|time:'H:i'}}</h1>
     <h1>Short date format: {{date_time|date:'SHORT_DATE_FORMAT'}}</h1>
+    <h1>Float Format</h1>
+    <hr>
+    <h2>Original Digit: {{amount.0}}</h2>
+    <h2>Default float format: {{amount.0|floatformat}}</h2>
+    <h2>3 Digit float: {{amount.0|floatformat:3}}</h2>
+    <h2>3 Digit float(no trailing zeros): {{amount.0|floatformat:-3}}</h2>
+    <h2>Decimal: {{amount.0|floatformat:0}}</h2>
+    <hr>
+    <h2>Original Digit: {{amount.1}}</h2>
+    <h2>Default float format: {{amount.1|floatformat}}</h2>
+    <h2>3 Digit float: {{amount.1|floatformat:3}}</h2>
+    <h2>3 Digit float(no trailing zeros): {{amount.1|floatformat:-3}}</h2>
+    <h2>Decimal: {{amount.1|floatformat:0}}</h2>
+    <hr>
+    <h2>Original Digit: {{amount.2}}</h2>
+    <h2>Default float format: {{amount.2|floatformat}}</h2>
+    <h2>3 Digit float: {{amount.2|floatformat:3}}</h2>
+    <h2>3 Digit float(no trailing zeros): {{amount.2|floatformat:-3}}</h2>
+    <h2>Decimal: {{amount.2|floatformat:0}}</h2>
+    <hr>
 </h1>
 
 </body>

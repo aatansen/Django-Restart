@@ -19,6 +19,7 @@
       - [Variables](#variables)
       - [Filters](#filters)
       - [Date and Time](#date-and-time)
+      - [Float Format](#float-format)
 
 ## **Day 01**
 
@@ -365,5 +366,84 @@
   | `SHORT_DATETIME_FORMAT` | `'m/d/Y P'`   | `06/01/2025 2:30 p.m.`    |
 
 - [Date Time Official Built-in template tags and filters](https://docs.djangoproject.com/en/stable/ref/templates/builtins/#date)
+
+[⬆️ Go to Context](#context)
+
+#### Float Format
+
+- Send Float data in context of [views.py](./Day%2003/first_app/views.py)
+
+  ```py
+  def first_app(request):
+      ...
+      amount = [10.23647,10.000,10.36000]
+      dynamic_data={
+          ...
+          'amount':amount
+      }
+      return render(request,'first_app/index.html',context=dynamic_data)
+  ```
+
+- Format data in different way using `floatformat`
+
+- For digit `10.23647`
+
+  ```jinja
+  <h2>Original Digit: {{amount.0}}</h2>
+  <h2>Default float format: {{amount.0|floatformat}}</h2>
+  <h2>3 Digit float: {{amount.0|floatformat:3}}</h2>
+  <h2>3 Digit float(no trailing zeros): {{amount.0|floatformat:-3}}</h2>
+  <h2>Decimal: {{amount.0|floatformat:0}}</h2>
+  ```
+
+- Output
+
+  ```txt
+  Original Digit: 10.23647
+  Default float format: 10.2
+  3 Digit float: 10.236
+  3 Digit float(no trailing zeros): 10.236
+  Decimal: 10
+  ```
+
+- For digit `10.000`
+
+  ```jinja
+  <h2>Original Digit: {{amount.1}}</h2>
+  <h2>Default float format: {{amount.1|floatformat}}</h2>
+  <h2>3 Digit float: {{amount.1|floatformat:3}}</h2>
+  <h2>3 Digit float(no trailing zeros): {{amount.1|floatformat:-3}}</h2>
+  <h2>Decimal: {{amount.1|floatformat:0}}</h2>
+  ```
+
+- Output
+
+  ```txt
+  Original Digit: 10.0
+  Default float format: 10
+  3 Digit float: 10.000
+  3 Digit float(no trailing zeros): 10
+  Decimal: 10
+  ```
+
+- For digit `10.36000`
+
+  ```jinja
+  <h2>Original Digit: {{amount.2}}</h2>
+  <h2>Default float format: {{amount.2|floatformat}}</h2>
+  <h2>3 Digit float: {{amount.2|floatformat:3}}</h2>
+  <h2>3 Digit float(no trailing zeros): {{amount.2|floatformat:-3}}</h2>
+  <h2>Decimal: {{amount.2|floatformat:0}}</h2>
+  ```
+
+- Output
+
+  ```txt
+  Original Digit: 10.36
+  Default float format: 10.4
+  3 Digit float: 10.360
+  3 Digit float(no trailing zeros): 10.360
+  Decimal: 10
+  ```
 
 [⬆️ Go to Context](#context)
