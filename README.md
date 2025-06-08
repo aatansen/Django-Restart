@@ -20,6 +20,7 @@
       - [Filters](#filters)
       - [Date and Time](#date-and-time)
       - [Float Format](#float-format)
+      - [If, If-Else \& If-Elif-Else Tag](#if-if-else--if-elif-else-tag)
 
 ## **Day 01**
 
@@ -444,6 +445,56 @@
   3 Digit float: 10.360
   3 Digit float(no trailing zeros): 10.360
   Decimal: 10
+  ```
+
+[⬆️ Go to Context](#context)
+
+#### If, If-Else & If-Elif-Else Tag
+
+- Creating a variable `user_type` in [views.py](./Day%2003/first_app/views.py)
+
+  ```py
+  def first_app(request):
+      ...
+      user_type = 'staff'
+      dynamic_data={
+          ...
+          'user_type':user_type,
+      }
+      return render(request,'first_app/index.html',context=dynamic_data)
+  ```
+
+- Using `if` tag
+
+  ```jinja
+  <h1>If Tag</h1>
+  {% if user_type %}
+  <h2>User type is: {{ user_type }}</h2>
+  {% endif %}
+  ```
+
+- Using `if-else` tag
+
+  ```jinja
+  <h1>If-Else Tag</h1>
+  {% if user_type == "superuser" %}
+  <h2>Welcome, Superuser!</h2>
+  {% else %}
+  <h2>Access restricted to superusers only.</h2>
+  {% endif %}
+  ```
+
+- Using `if-elif-else` tag
+
+  ```jinja
+  <h1>If-Elif-Else Tag</h1>
+  {% if user_type == "superuser" %}
+  <h2>Hello Superuser!</h2>
+  {% elif user_type == "staff" %}
+  <h2>Hello Staff Member!</h2>
+  {% else %}
+  <h2>Hello Guest!</h2>
+  {% endif %}
   ```
 
 [⬆️ Go to Context](#context)

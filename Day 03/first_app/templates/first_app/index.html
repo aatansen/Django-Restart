@@ -43,7 +43,24 @@
     <h2>3 Digit float(no trailing zeros): {{amount.2|floatformat:-3}}</h2>
     <h2>Decimal: {{amount.2|floatformat:0}}</h2>
     <hr>
-</h1>
-
+    <h1>If Tag</h1>
+    {% if user_type %}
+    <h2>User type is: {{ user_type }}</h2>
+    {% endif %}
+    <h1>If-Else Tag</h1>
+    {% if user_type == "superuser" %}
+    <h2>Welcome, Superuser!</h2>
+    {% else %}
+    <h2>Access restricted to superusers only.</h2>
+    {% endif %}
+    <h1>If-Elif-Else Tag</h1>
+    {% if user_type == "superuser" %}
+    <h2>Hello Superuser!</h2>
+    {% elif user_type == "staff" %}
+    <h2>Hello Staff Member!</h2>
+    {% else %}
+    <h2>Hello Guest!</h2>
+    {% endif %}
+    <hr>
 </body>
 </html>
