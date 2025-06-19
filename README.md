@@ -21,6 +21,7 @@
       - [Date and Time](#date-and-time)
       - [Float Format](#float-format)
       - [If, If-Else \& If-Elif-Else Tag](#if-if-else--if-elif-else-tag)
+      - [For Loop Tag](#for-loop-tag)
 
 ## **Day 01**
 
@@ -495,6 +496,69 @@
   {% else %}
   <h2>Hello Guest!</h2>
   {% endif %}
+  ```
+
+[⬆️ Go to Context](#context)
+
+#### For Loop Tag
+
+- Iterate each element of `students`
+
+  ```py
+  def first_app(request):
+      ...
+      students=['Tansen','Shakil','Jessica']
+      dynamic_data={
+          ...
+          'students':students,
+      }
+      return render(request,'first_app/index.html',context=dynamic_data)
+  ```
+
+- Using for loop tag
+
+  ```jinja
+  <ul>
+    {% for student in students %}
+    <li>{{student}}</li>
+    {% endfor %}
+  </ul>
+  ```
+
+- Using for loop reversed filter
+
+  ```jinja
+  <ul>
+    {% for student in students reversed %}
+    <li>{{student}}</li>
+    {% endfor %}
+  </ul>
+  ```
+
+- Using for loop more filter
+
+  ```jinja
+  <ul>
+    {% for student in students reversed %}
+    <li>
+      {{ forloop.counter }}. {{ student|upper }}
+      {% if forloop.first %}👑{%endif %}
+      {% if forloop.last %}🏁{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+  ```
+
+- Check if list is `empty`
+
+  ```jinja
+  <ul>
+    {% for student in students %}
+      <li>{{ student }}</li>
+    {% empty %}
+      <li>No students found 😔</li>
+    {% endfor %}
+  </ul>
   ```
 
 [⬆️ Go to Context](#context)
